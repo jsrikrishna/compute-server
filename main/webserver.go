@@ -3,9 +3,15 @@ package main
 import (
 	"log"
 	"net/http"
+	"compute-server/config"
+	"fmt"
 )
 
 func main()  {
 	router := NewRouter()
-	log.Fatal(http.ListenAndServe(":8081", router))
+	configuration, err := config.ReadConfig()
+	if err != nil {
+		fmt.Printf("Error occured while reading configuration %v\n", err)
+	}
+	log.Fatal(http.ListenAndServe(configuration.BindTo, router))
 }
