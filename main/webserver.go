@@ -8,10 +8,14 @@ import (
 )
 
 func main()  {
-	router := NewRouter()
 	configuration, err := config.ReadConfig()
 	if err != nil {
 		fmt.Printf("Error occured while reading configuration %v\n", err)
 	}
+	computeServer := &ComputeServer{
+		Configuration: configuration,
+	}
+	router := NewRouter(computeServer)
+
 	log.Fatal(http.ListenAndServe(configuration.BindTo, router))
 }

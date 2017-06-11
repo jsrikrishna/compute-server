@@ -2,6 +2,7 @@ package main
 
 import (
 	"time"
+	"compute-server/config"
 )
 
 type Computation struct {
@@ -10,4 +11,14 @@ type Computation struct {
 	TimeTaken   time.Time `json:"due"`
 }
 
+type SystemResourcesData struct {
+	Address string `json: "Address"`
+	UsedPercent float64 `json: "usedPercent"`
+	Free uint64 `json: "free"`
+}
+
 type Computations []Computation
+
+type ComputeServer struct {
+	Configuration config.Configuration
+}

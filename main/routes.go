@@ -12,24 +12,33 @@ type Route struct {
 }
 
 type Routes []Route
+func (computeServer *ComputeServer) GetRoutes() Routes {
+	var routes = Routes{
+		Route{
+			"Index",
+			"GET",
+			"/",
+			computeServer.Index,
+		},
+		Route{
+			"Run",
+			"GET",
+			"/run",
+			computeServer.Run,
+		},
+		Route{
+			"Resources",
+			"POST",
+			"/resources",
+			computeServer.Compute,
+		},
+		Route{
+			"SystemResources",
+			"GET",
+			"/systemResources",
+			computeServer.GetSystemResources,
+		},
+	}
+	return routes
 
-var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"/",
-		Index,
-	},
-	Route{
-		"Run",
-		"GET",
-		"/run",
-		Run,
-	},
-	Route{
-		"Compute",
-		"GET",
-		"/compute",
-		Compute,
-	},
 }
