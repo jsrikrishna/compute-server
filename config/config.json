@@ -1,4 +1,4 @@
 {
   "name": "compute-server-1",
-  "bindto": "localhost:8081"
+  "bindto": "localhost:8084"
 }
